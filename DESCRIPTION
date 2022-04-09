@@ -1,0 +1,42 @@
+Package: gtsibble
+Title: Geo-temporal Data Frames and Tools
+Version: 0.99.0
+Authors@R: 
+    c(person(given = "Jacob",
+             family = "Bien",
+             role = "ctb"),
+      person(given = "Logan",
+             family = "Brooks",
+             role = "aut"),
+      person(given = "Quang",
+             family = "Nguyen",
+             role = "ctb"),
+      person(given = "Dmitry",
+             family = "Shemetov",
+             role = "aut"),
+      person(given = "Ryan",
+             family = "Tibshirani",
+             role = c("aut", "cre"),
+             email = "ryantibs@cmu.edu"))
+Description: Provides a `gtsibble` class for geo-temporal data manipulation
+    for time-series epidemiological modelling.  
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    epiprocess,
+    reticulate,
+    tsibble
+Config/reticulate:
+    list(
+        packages = list(
+            list(package = "delphi-utils", pip = TRUE)
+        )
+    )
+Suggests: 
+    rmarkdown,
+    knitr,
+    covidcast
+VignetteBuilder: knitr
+Remotes: cmu-delphi/epiprocess
