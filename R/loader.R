@@ -7,8 +7,8 @@ delphi_utils <- NULL
 
 .onLoad <- function(libname, pkgname){
     reticulate::configure_environment(pkgname)
-    delphi_utils <<- reticulate::import("delphi_utils", delay_load = TRUE)
-    message("Using delphi-utils version ", delphi_utils[["__version__"]])
+    #delphi_utils <<- reticulate::import("delphi_utils", delay_load = TRUE)
+    #message("Using delphi-utils version ", delphi_utils[["__version__"]])
 }
 
 #' @title Installing \code{delphi-utils} using \code{reticulate}
@@ -17,10 +17,23 @@ delphi_utils <- NULL
 #'     available on Windows.
 #' @param conda The path to conda executable. By default, "auto" will allow
 #'     \code{reticulate} to automatically find an appropriate conda-binary
-#' @param ... Additional arguments passed to \code{reticulate::py_install}. Since
+#' @param ... Additional arguments passed to [reticulate::py_install]. Since
 #'     \code{delphi-utils} is only available on PyPi, pip is always set to TRUE.
 #' @seealso [py_install]
-install_delphi_utils <- function(method = "auto", conda = "auto", ...){
-    reticulate::py_install("delphi-utils", method = method, conda = conda,
-                           pip = TRUE, ...)
+#' @export
+load_delphi_utils <- function(method = "auto", conda = "auto", ...){
+    if (reticulate::py_module_available("delphi_utils")){
+        delphi_utils <<- reticulate::import("delphi_utils", delay_load = TRUE)
+        message("Using delphi-utils version ", delphi_utils[["__version__"]])
+    } else {
+        if (grepl(pattern = "Windows", osVersion)){
+            message("Installing geopandas for Windows...")
+            reticulate::py_install("geopandas", method = method, conda = conda, 
+                                   pip = FALSE, 
+                                   ...)
+        }
+        message("installing delphi-utils")
+        reticulate::py_install("delphi-utils", method = method, conda = conda,
+                               pip = TRUE, ...)
+    }
 }

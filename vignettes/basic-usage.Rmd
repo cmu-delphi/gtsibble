@@ -14,15 +14,17 @@ knitr::opts_chunk$set(
 )
 ```
 
+`gtsibble` depends on the `delphi-utils` python package. Prior to installing the package, it is recommended that you try to set up your own python environment via `reticulate`. Installing `gtsibble` will attempt to set-up a python environment however manual installation might be required.  
+
+
 ```{r setup}
 library(gtsibble)
 library(covidcast)
 library(epiprocess)
 ```
 
-We load some simple data
+`gtsibble` requires setting up `delphi-utils`  
 
 ```{r}
-df <- covidcast::
-
+load_delphi_utils()
 ```
