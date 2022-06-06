@@ -14,13 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-When installing the package, R installer should automatically install all the relevant python dependencies (namely `delphi-utils`). However, there might be issues with regards to this installation procedure (esp. on Windows machines). As such, we also provide a custom function to provide manual installation   
+`gtsibble` depends on the `delphi-utils` python package. Prior to installing the package, it is recommended that you try to set up your own python environment via `reticulate`. Installing `gtsibble` will attempt to set-up a python environment however manual installation might be required.  
 
 ```{r manual_install, eval=FALSE}
 install_delphi_utils()
 ```
-
-Let's load the packages once the proper dependencies are installed.  
 
 ```{r setup}
 library(gtsibble)
@@ -28,9 +26,13 @@ library(covidcast)
 library(epiprocess)
 ```
 
-We load some simple data
+`gtsibble` requires setting up `delphi-utils`  
 
 ```{r}
+<<<<<<< HEAD
 
 
+=======
+load_delphi_utils()
+>>>>>>> cd65017f91d4bc7c1de314c7338f4a1b11d83cf6
 ```

@@ -20,6 +20,13 @@ Authors@R:
              email = "ryantibs@cmu.edu"))
 Description: Provides a `gtsibble` class for geo-temporal data manipulation
     for time-series epidemiological modelling.  
+Config/reticulate:
+  list(
+    packages = list(
+        list(package = "geopandas", pip = FALSE),
+        list(package = "delphi-utils", pip=TRUE)
+    )
+  )
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -28,12 +35,6 @@ Imports:
     epiprocess,
     reticulate,
     tsibble
-Config/reticulate:
-    list(
-        packages = list(
-            list(package = "delphi-utils", pip = TRUE)
-        )
-    )
 Suggests: 
     rmarkdown,
     knitr,
