@@ -7,8 +7,8 @@ delphi_utils <- NULL
 
 .onLoad <- function(libname, pkgname){
     reticulate::configure_environment(pkgname)
-    #delphi_utils <<- reticulate::import("delphi_utils", delay_load = TRUE)
-    #message("Using delphi-utils version ", delphi_utils[["__version__"]])
+    delphi_utils <<- reticulate::import("delphi_utils", delay_load = TRUE)
+    message("Using delphi-utils version ", delphi_utils[["__version__"]])
 }
 
 #' @title Installing \code{delphi-utils} using \code{reticulate}
@@ -28,8 +28,8 @@ load_delphi_utils <- function(method = "auto", conda = "auto", ...){
     } else {
         if (grepl(pattern = "Windows", osVersion)){
             message("Installing geopandas for Windows...")
-            reticulate::py_install("geopandas", method = method, conda = conda, 
-                                   pip = FALSE, 
+            reticulate::py_install("geopandas", method = method, conda = conda,
+                                   pip = FALSE,
                                    ...)
         }
         message("installing delphi-utils")

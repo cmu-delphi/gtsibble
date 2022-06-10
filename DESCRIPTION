@@ -34,6 +34,8 @@ RoxygenNote: 7.1.2
 Imports: 
     epiprocess,
     reticulate,
+    rlang,
+    tibble,
     tsibble
 Suggests: 
     rmarkdown,

@@ -20,19 +20,11 @@ knitr::opts_chunk$set(
 install_delphi_utils()
 ```
 
+If `delphi-utils` are successfully installed, a message with the version number will be displayed. 
+
 ```{r setup}
 library(gtsibble)
 library(covidcast)
 library(epiprocess)
 ```
 
-`gtsibble` requires setting up `delphi-utils`  
-
-```{r}
-<<<<<<< HEAD
-
-
-=======
-load_delphi_utils()
->>>>>>> cd65017f91d4bc7c1de314c7338f4a1b11d83cf6
-```
