@@ -1,0 +1,40 @@
+---
+title: "Setting up `gtsibble`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{installation-instructions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+`gtsibble` depends on external Python dependencies, namely `delphi-utils` which is available via PyPI (i.e., pip). Installing these dependencies utilizes the `reticulate` package. The setup for managing python dependencies follow [this article](https://rstudio.github.io/reticulate/articles/package.html) on the `reticulate` package website, which requires users to call a function to perform the initial set up for the package.  
+
+```{r setup, include=FALSE}
+library(gtsibble)
+reticulate::use_condaenv("r-reticulate")
+install_delphi_utils()
+```
+
+The function above would install `delphi-utils` from pip using default options from `reticulate::py_install`. This would typically mean that `reticulate` would use `conda` to install dependencies to the `r-reticulate` environment. Users can also force install `delphi-utils` if a version already exists by specifying `force = TRUE`.  
+
+If, for some reason, the environment that was loaded is wrong (e.g., accidentally loads the system Python environment), then users would need to re-specify `r-reticulate` as the default environment prior to using `gtsibble`. 
+
+```{r, eval=FALSE}
+reticulate::use_condaenv("r-reticulate")
+```
+
+After setting up `delphi-utils`, the version can be checked:  
+
+```{r}
+check_delphi_utils()
+```
+
+This custom installation method allows `gtsibble` dependencies to be installed as part of any custom environment managed by `reticulate`. Activate the relevant environment using `reticulate::use_python()`/`use_condaenv()`/`use_virtualenv()`. See documentation of `reticulate` for more details.    
